@@ -2,7 +2,7 @@ import Card from "./companet/card/card";
 import { getData } from "./constans/db"
 import './app.css'
 import Cart from "./companet/cart/cart";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 
 const courses =  getData();
@@ -51,6 +51,18 @@ const App = () => {
     telegram.MainButton.text = 'sotib olish :)';
     telegram.MainButton.show();
   }
+
+  const onSendData = useCallback(() =>{
+    telegram.onSendData(JSON.stringify(cartItems));
+  }, [cartItems]);
+
+
+    useEffect(() =>{
+      telegram.onEvent('mainButtonCliked', onSendData);
+
+      return () => telegram.offEvent('mainButtonCliked', onSendData);
+    }, [onSendData])
+
 
   return (
     <>
