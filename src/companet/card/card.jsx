@@ -3,7 +3,7 @@ import Button from '../buttun/button'
 import './card.css'
 const Card = (props) => {
     const [count, setCount] = useState(0)
-    const {course,onAddItem,onDeleteItem} = props
+    const {course,onAddItem,onRemoveItem} = props
 
 
     const handlerInkrament = () =>{
@@ -14,7 +14,7 @@ const Card = (props) => {
 
     const heandlerDekrament = () =>{
         setCount(prev => prev -1)
-        onDeleteItem(course)
+        onRemoveItem(course)
     }
 
   return (
