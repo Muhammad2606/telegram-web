@@ -1,13 +1,14 @@
+import { useCallback, useEffect, useState } from "react";
 import Card from "./companet/card/card";
 import { getData } from "./constans/db"
 import './app.css'
 import Cart from "./companet/cart/cart";
-import { useCallback, useEffect, useState } from "react";
+
 
 
 const courses =  getData();
 const telegram = window.Telegram.WebApp;
-
+  
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
   useEffect(() =>{
